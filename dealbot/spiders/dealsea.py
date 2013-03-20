@@ -1,7 +1,7 @@
 from scrapy.spider import BaseSpider
 from scrapy.selector import HtmlXPathSelector
 
-from items import Website
+from dealbot.items import Website
 
 
 class DealseaSpider(BaseSpider):
