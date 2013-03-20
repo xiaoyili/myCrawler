@@ -1,10 +1,10 @@
 # Scrapy settings for dirbot project
 
-SPIDER_MODULES = ['dirbot.spiders']
-NEWSPIDER_MODULE = 'dirbot.spiders'
-DEFAULT_ITEM_CLASS = 'dirbot.items.Website'
+SPIDER_MODULES = ['spiders']
+NEWSPIDER_MODULE = 'spiders'
+DEFAULT_ITEM_CLASS = 'items.Website'
 
 ITEM_PIPELINES = [
-    'dirbot.pipelines.FilterWordsPipeline',
-    'dirbot.pipelines.PricePipeline',
+    'pipelines.FilterWordsPipeline',
+    'pipelines.PricePipeline',
 ]

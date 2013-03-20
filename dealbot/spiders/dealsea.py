@@ -4,12 +4,11 @@ from scrapy.selector import HtmlXPathSelector
 from items import Website
 
 
-class DmozSpider(BaseSpider):
-    name = "dmoz"
-    allowed_domains = ["dmoz.org"]
+class DealseaSpider(BaseSpider):
+    name = 'dealsea'
+    allowed_domains = ["dealsea.com"]
     start_urls = [
-        "http://www.dmoz.org/Computers/Programming/Languages/Python/Books/",
-        "http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/",
+        "http://dealsea.com/",
     ]
 
     def parse(self, response):
@@ -32,3 +31,4 @@ class DmozSpider(BaseSpider):
             items.append(item)
 
         return items
+
