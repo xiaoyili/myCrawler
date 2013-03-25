@@ -4,11 +4,11 @@ from scrapy.selector import HtmlXPathSelector
 from dealbot.items import Website
 
 
-class DealseaSpider(BaseSpider):
-    name = 'dealsea'
-    allowed_domains = ["dealsea.com"]
+class DealmoonSpider(BaseSpider):
+    name = 'dealmoon'
+    allowed_domains = ["dealmoon.com"]
     start_urls = [
-        "http://dealsea.com/",
+        "http://dealmoon.com/Computers",
     ]
 
     def parse(self, response):
@@ -20,14 +20,15 @@ class DealseaSpider(BaseSpider):
         @scrapes name
         """
         hxs = HtmlXPathSelector(response)
-        sites = hxs.select('//ul[@class="directory-url"]/li')
+        li_sites = hxs.select('//div[@class="cat_content_right"]/div/ul/li')
         items = []
 
-        for site in sites:
+        for li in li_sites:
             item = Website()
-            item['name'] = site.select('a/text()').extract()
-            item['url'] = site.select('a/@href').extract()
-            item['description'] = site.select('text()').extract()
+            item['id'] = li.select('./@id').extract()
+            item['detail_link'] = li.select('./div[@class="left_img"]/div/h2/a/@href').extract()
+            item['img_src_link'] = li.select('./div[@class="left_img"]/div/a/img').extract()
+
             items.append(item)
 
         return items
